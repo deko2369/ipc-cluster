@@ -8,7 +8,7 @@ export interface IpcPrimary extends EventEmitter {
   prependListener(event: string | symbol, listener: (worker: Worker, ...args: any[]) => void): this;
   prependOnceListener(event: string | symbol, listener: (worker: Worker, ...args: any[]) => void): this;
   removeListener(event: string | symbol, listener: (worker: Worker, ...args: any[]) => void): this;
-  emitTo(workers: Array<Worker>, event: string | symbol, ...args: any[]): boolean;
+  emitTo(workers: Worker[], event: string | symbol, ...args: any[]): boolean;
 }
 
 export interface IpcWorker extends EventEmitter {
