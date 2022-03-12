@@ -1,0 +1,14 @@
+{
+  "name": "ipc-cluster",
+  "version": "1.0.0",
+  "description": "Inter-process communication module for Node.js clusters",
+  "repository": "deko2369/ipc-cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
