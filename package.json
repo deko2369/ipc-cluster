@@ -1,6 +1,6 @@
 {
   "name": "ipc-cluster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Inter-process communication module for Node.js clusters",
   "repository": "deko2369/ipc-cluster",
   "main": "index.js",

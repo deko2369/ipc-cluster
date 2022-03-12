@@ -21,14 +21,14 @@ describe('IpcPrimary', () => {
       .toThrowError(new Error('Process is not primary'));
   })
 
-  it('registers to the event listener of the cluster module', () => {
+  it('registers with the event listener of the cluster module', () => {
     expect(ipcPrimary.registered).toBeFalsy();
     ipcPrimary.on('test1', () => {
     });
     expect(ipcPrimary.registered).toBeTruthy();
   });
 
-  it('receives event from worker', (done) => {
+  it('receives an event from worker', (done) => {
     const self = ipcPrimary.on('test2', (worker, arg1, arg2, arg3) => {
       expect(worker).toBeNull();
       expect(arg1).toEqual(1);
@@ -57,7 +57,7 @@ describe('IpcPrimary', () => {
     setTimeout(done, 500);
   });
 
-  it('calls other EventEmitter methods', () => {
+  it('calls another EventEmitter methods', () => {
     let self;
     const listener = () => {
     };
@@ -81,7 +81,7 @@ describe('IpcPrimary', () => {
     expect(prependOnceListenerMock).toHaveBeenCalledWith('prepend-once-listener-event', listener);
   });
 
-  it('emits event to workers', () => {
+  it('sends event to workers', () => {
     const { Worker } = jest.requireActual('cluster');
 
     const sendMock = jest
@@ -90,7 +90,7 @@ describe('IpcPrimary', () => {
 
     cluster.__setWorkers([new Worker(), new Worker(), new Worker()]);
 
-    const fired = ipcPrimary.emit('primary-event', 1, 2, 3);
+    const fired = ipcPrimary.send('primary-event', 1, 2, 3);
 
     expect(fired).toBeTruthy();
     expect(sendMock).toHaveBeenCalledTimes(3);

@@ -29,18 +29,18 @@ if (cluster.isMaster) {
 
     // Time-consuming process...
 
-    // Emit to all worker processes
-    ipcPrimary.emit('process-finished', 'primary message');
-    // Emit to specific worker processes
-    ipcPrimary.emitTo([worker], 'process-finished', 'primary message');
+    // Send event to all worker processes
+    ipcPrimary.send('process-finished', 'primary message');
+    // Send event to specific worker processes
+    ipcPrimary.sendTo([worker], 'process-finished', 'primary message');
   });
 } else if (cluster.isWorker) {
   const app = express();
   const port = 8000;
 
   app.get('/', (req, res) => {
-    // Emit to primary process
-    ipcWorker.emit('requested', 'worker message');
+    // Send event to primary process
+    ipcWorker.send('requested', 'worker message');
     res.status(200).send('OK');
   });
 
