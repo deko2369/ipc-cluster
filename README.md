@@ -13,7 +13,7 @@ $ npm install ipc-cluster
 
 ### Usage
 
-```ecmascript 6
+```node
 const cluster = require('cluster');
 const express = require('express');
 
