@@ -1,1 +1,6 @@
-module.exports = require('./lib/ipc-cluster');
+import { ipcPrimary, ipcWorker } from './lib/ipc-cluster.js';
+
+export {
+    ipcPrimary,
+    ipcWorker
+};
